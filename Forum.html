@@ -67,9 +67,13 @@
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             cell1.innerHTML = post;
-            cell2.innerHTML = "reply";
-
-            cell2.id=category+table.rows.length;
+            var button = document.createElement('button');
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "button");
+            button.setAttribute("onclick", "reply(this)");
+            var text = document.createTextNode("reply");
+            button.appendChild(text);
+            cell2.appendChild(button);
         }
 
         function reply(reply_button) {
@@ -96,7 +100,7 @@
             button.setAttribute("onclick", "post_reply(this)");
             var text = document.createTextNode("post");
             button.appendChild(text);
-            cell2.appendChild(button); // add a button
+            cell2.appendChild(button);
         }
 
         function post_reply(post_reply_button) {
@@ -105,8 +109,6 @@
 
             var post = postcell.childNodes[0].value;
             if(post===""){ alert("please input reply"); return; }
-            //postcell.removeChild(postcell.childNodes[0]);
-            //alert("'" + post + "'");
             postcell.innerHTML = "    re:  " + post;
             tablerow.cells[1].innerHTML = "";
 
@@ -167,7 +169,6 @@
     <br> <br>
     <form>
         <label> Share your thoughts: </label> <br>
-
         <span>What is your post's about?</span><select name="choose_category" id="post_category">
         <option value="all_category">All Topics</option>
         <option value="study_category">Study</option>
@@ -176,7 +177,6 @@
         <textarea id="post" rows = "5" cols = "80"> </textarea> </br>
         <button type="button" class="button" onclick="post_topic()">Post</button>
     </form>
-
 </body>
 </center>
 </html>
