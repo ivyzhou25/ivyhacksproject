@@ -1,50 +1,176 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
-<head><META http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head>
+    <style>
+        .button {
+            background-color: grey;
+            border: none;
+            color: black;
+            padding: 2px; 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 60%;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>forum.com</title>
+    <script>
+        function filter_post(category) {
+            var elements;
+            var i;
+            var table = document.getElementById("post_list");
+
+            for (i=0;i<table.rows.length;i++){
+                if (category === "all_category") {
+                    table.rows[i].style.display = "table-row";
+                } else {
+                    table.rows[i].style.display = "none";
+                }
+            }
+
+            elements = document.getElementsByClassName(category);
+            //alert(elements.length);
+            for (i=0; i< elements.length; i++) {
+                elements[i].style.display = "table-row";
+            }
+        }
+
+        function post_topic() {
+            var category = document.getElementById("post_category").value;
+            var post = document.getElementById("post").value;
+
+            if(post === " ") {alert("Please write your thoughts!"); return;}
+
+            var table = document.getElementById("post_list");
+            var row = table.insertRow(table.rows.length);
+            row.className = category;
+
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = post;
+            cell2.innerHTML = "reply";
+
+            cell2.id=category+table.rows.length;
+        }
+
+        function reply(reply_button) {
+            var tablerow = reply_button.parentElement.parentElement;
+            var table = document.getElementById("post_list");
+            var newIndex = tablerow.rowIndex + 1;
+
+            var row = table.insertRow(newIndex);
+            row.className = tablerow.className;
+
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+            // create a textbox
+            var textbox = document.createElement("textarea");
+            textbox.setAttribute("rows", "3");
+            textbox.setAttribute("cols", "60");
+            cell1.appendChild(textbox); // add textbox
+
+            //create a button
+            var button = document.createElement('button');
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "button");
+            button.setAttribute("onclick", "post_reply(this)");
+            var text = document.createTextNode("post");
+            button.appendChild(text);
+            cell2.appendChild(button); // add a button
+        }
+
+        function post_reply(post_reply_button) {
+            var tablerow = post_reply_button.parentElement.parentElement;
+            var postcell = tablerow.cells[0];
+
+            var post = postcell.childNodes[0].value;
+            if(post===""){ alert("please input reply"); return; }
+            //postcell.removeChild(postcell.childNodes[0]);
+            //alert("'" + post + "'");
+            postcell.innerHTML = "    re:  " + post;
+            tablerow.cells[1].innerHTML = "";
+
+        }
+
+    </script>
+</head>
+
 <center>
-   <div style="background-color:grey">
-      <hr><h2><a href="Forum.html">HOME | FORUM</a><h2><hr>
-      <h3>Welcome to our discussion forum for current issues, you can share your thoughts and reply to other&#39;s post here</h3>
-      <h4>
-         Filter:
-         <select name="category">
-            <option value="all_category">All Topics</option>
-            <option value="study_category">Study</option>
-            <option value="life_category">Life</option>
-         </select>
-      </h4>
-      <table>
-         <tr>
+    <body style="background-color:grey">
+    <hr><h2><a href="MyWebsite.html">HOME</a> | FORUM<h2><hr>
+        <h3>Welcome to our discussion forum for current issues, you can share your thoughts and reply to other's post here</h3>
+    <h4>
+        Filter:
+
+                <select name="category" id="category" onchange="filter_post(this.value)">
+                    <option value="all_category">All Topics</option>
+                    <option value="study_category">Study</option>
+                    <option value="life_category">Life</option>
+                </select>
+    </br>
+    </h4>
+    <table id="post_list">
+        <tr>
             <td width="90%"> Welcome to our discussion forum. We have this forum to talk about the impact and issues of covid-19. </td>
-         </tr>
-         <tr>
+            <td> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
+        </tr>
+
+        <tr class="study_category">
             <td width="90%"> the school year this fall? </td>
-            <td> <button type="button">reply</button> </td>
-         </tr>
-         <tr>
+            <td> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
+        </tr>
+
+
+        <tr class="study_category">
             <td width="90%"> any good online study resource? </td>
-            <td> <button type="button">reply</button></td>
-         </tr>
-         <tr>
+            <td> <button type="button" class="button" onclick="reply(this)">reply</button></td>
+        </tr>
+
+        <tr class="life_category">
             <td width="90%"> what is your summer life is like? </td>
-            <td width="90%"> <button type="button">reply</button> </td>
-         </tr>
-         <tr>
+            <td width="90%"> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
+        </tr>
+
+        <tr class="life_category">
             <td width="90%"> feel so boring on the stay at home for next school year? </td>
-            <td width="90%"> <button type="button">reply</button> </td>
-         </tr>
-      </table>
-      <br> <br>
-      <form target="_blank" onsubmit="try {return window.confirm(&quot;This form may not function properly due to certain security constraints.\nContinue?&quot;);} catch (e) {return false;}">
-         <label> Share your thoughts: </label> <br>
-         <span>What is your post&#39;s about?</span><select name="choose_category">
-         <option value="all_category">All Topics</option>
-         <option value="study_category">Study</option>
-         <option value="life_category">Life</option>
-      </select>
-         <textarea rows="5" cols="80"> </textarea>
-         <button type="button">Post</button>
-      </form>
-   </h2></h2></div>
+            <td width="90%"> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
+        </tr>
+
+    </table>
+    <br> <br>
+    <form>
+        <label> Share your thoughts: </label> <br>
+
+        <span>What is your post's about?</span><select name="choose_category" id="post_category">
+        <option value="all_category">All Topics</option>
+        <option value="study_category">Study</option>
+        <option value="life_category">Life</option>
+    </select> </br></p>
+        <textarea id="post" rows = "5" cols = "80"> </textarea> </br>
+        <button type="button" class="button" onclick="post_topic()">Post</button>
+    </form>
+
+</body>
 </center>
-</body></html>
+</html>
