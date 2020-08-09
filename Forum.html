@@ -2,7 +2,7 @@
 <head>
     <style>
         .button {
-            background-color: grey;
+            background-color:  lightgreen;
             border: none;
             color: black;
             padding: 2px; 12px;
@@ -24,16 +24,15 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 60%;
+            
         }
         tr:nth-child(even) {
             background-color: #dddddd;
         }
-
-
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>forum.com</title>
+    <title>HealthSite</title>
     <script>
         function filter_post(category) {
             var elements;
@@ -68,7 +67,6 @@
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             cell1.innerHTML = post;
-
             var button = document.createElement('button');
             button.setAttribute("type", "button");
             button.setAttribute("class", "button");
@@ -76,7 +74,6 @@
             var text = document.createTextNode("reply");
             button.appendChild(text);
             cell2.appendChild(button);
-            
         }
 
         function reply(reply_button) {
@@ -123,7 +120,7 @@
 </head>
 
 <center>
-    <body style="background-color:grey">
+    <body style="background-color:white">
     <hr><h2><a href="MyWebsite.html">HOME</a> | FORUM<h2><hr>
         <h3>Welcome to our discussion forum for current issues, you can share your thoughts and reply to other's post here</h3>
     <h4>
