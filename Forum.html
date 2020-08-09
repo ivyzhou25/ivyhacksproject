@@ -13,11 +13,13 @@
             margin: 4px 2px;
             cursor: pointer;
         }
+
         td, th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
+
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -26,6 +28,8 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,6 +54,7 @@
                 elements[i].style.display = "table-row";
             }
         }
+
         function post_topic() {
             var category = document.getElementById("post_category").value;
             var post = document.getElementById("post").value;
@@ -63,10 +68,17 @@
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             cell1.innerHTML = post;
-            cell2.innerHTML = "reply";
 
-            cell2.id=category+table.rows.length;
+            var button = document.createElement('button');
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "button");
+            button.setAttribute("onclick", "reply(this)");
+            var text = document.createTextNode("reply");
+            button.appendChild(text);
+            cell2.appendChild(button);
+            
         }
+
         function reply(reply_button) {
             var tablerow = reply_button.parentElement.parentElement;
             var table = document.getElementById("post_list");
@@ -93,6 +105,7 @@
             button.appendChild(text);
             cell2.appendChild(button); // add a button
         }
+
         function post_reply(post_reply_button) {
             var tablerow = post_reply_button.parentElement.parentElement;
             var postcell = tablerow.cells[0];
@@ -103,9 +116,12 @@
             //alert("'" + post + "'");
             postcell.innerHTML = "    re:  " + post;
             tablerow.cells[1].innerHTML = "";
+
         }
+
     </script>
 </head>
+
 <center>
     <body style="background-color:grey">
     <hr><h2><a href="MyWebsite.html">HOME</a> | FORUM<h2><hr>
@@ -122,28 +138,31 @@
     </h4>
     <table id="post_list">
         <tr>
-            <td width="90%"> Welcome to our discussion forum. We have this forum as a way to socialize and talk about the impact and issues of covid-19. </td>
-        </tr>
-        <tr class="study_category">
-            <td width="90%"> How are you feeling about school this fall? </td>
+            <td width="90%"> Welcome to our discussion forum. We have this forum to talk about the impact and issues of covid-19. </td>
             <td> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
         </tr>
+
         <tr class="study_category">
-            <td width="90%"> Do you have any good online study resources? </td>
+            <td width="90%"> the school year this fall? </td>
+            <td> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
+        </tr>
+
+
+        <tr class="study_category">
+            <td width="90%"> any good online study resource? </td>
             <td> <button type="button" class="button" onclick="reply(this)">reply</button></td>
         </tr>
+
         <tr class="life_category">
-            <td width="90%"> How was your summer? </td>
+            <td width="90%"> what is your summer life is like? </td>
             <td width="90%"> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
         </tr>
+
         <tr class="life_category">
-            <td width="90%"> How have your been feeling during quarantine? </td>
+            <td width="90%"> feel so boring on the stay at home for next school year? </td>
             <td width="90%"> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
         </tr>
-        <tr class="life_category">
-            <td width="90%"> What advice do you have on how to stay healthy during this pandemic? </td>
-            <td width="90%"> <button type="button" class="button" onclick="reply(this)">reply</button> </td>
-        </tr>
+
     </table>
     <br> <br>
     <form>
@@ -157,6 +176,7 @@
         <textarea id="post" rows = "5" cols = "80"> </textarea> </br>
         <button type="button" class="button" onclick="post_topic()">Post</button>
     </form>
+
 </body>
 </center>
 </html>
