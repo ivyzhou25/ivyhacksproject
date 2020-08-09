@@ -2,7 +2,7 @@
 <head>
     <style>
         .button {
-            background-color:  lightgreen;
+            background-color:  lightgray;
             border: none;
             color: black;
             padding: 2px; 12px;
@@ -27,7 +27,7 @@
             
         }
         tr:nth-child(even) {
-            background-color: #dddddd;
+            background-color: cadetblue;
         }
     </style>
     <meta charset="utf-8">
@@ -67,13 +67,9 @@
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             cell1.innerHTML = post;
-            var button = document.createElement('button');
-            button.setAttribute("type", "button");
-            button.setAttribute("class", "button");
-            button.setAttribute("onclick", "reply(this)");
-            var text = document.createTextNode("reply");
-            button.appendChild(text);
-            cell2.appendChild(button);
+            cell2.innerHTML = "reply";
+
+            cell2.id=category+table.rows.length;
         }
 
         function reply(reply_button) {
@@ -120,7 +116,15 @@
 </head>
 
 <center>
-    <body style="background-color:white">
+    <body style="background-color:darkslategray">
+       <style>
+           body {
+               color: white;
+           }
+           a {
+               color: lemonchiffon;
+           }
+       </style>
     <hr><h2><a href="MyWebsite.html">HOME</a> | FORUM<h2><hr>
         <h3>Welcome to our discussion forum for current issues, you can share your thoughts and reply to other's post here</h3>
     <h4>
@@ -177,3 +181,4 @@
 </body>
 </center>
 </html>
+
