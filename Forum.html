@@ -38,7 +38,6 @@
             var elements;
             var i;
             var table = document.getElementById("post_list");
-
             for (i=0;i<table.rows.length;i++){
                 if (category === "all_category") {
                     table.rows[i].style.display = "table-row";
@@ -46,24 +45,18 @@
                     table.rows[i].style.display = "none";
                 }
             }
-
             elements = document.getElementsByClassName(category);
-            //alert(elements.length);
             for (i=0; i< elements.length; i++) {
                 elements[i].style.display = "table-row";
             }
         }
-
         function post_topic() {
             var category = document.getElementById("post_category").value;
             var post = document.getElementById("post").value;
-
             if(post === " ") {alert("Please write your thoughts!"); return;}
-
             var table = document.getElementById("post_list");
             var row = table.insertRow(table.rows.length);
             row.className = category;
-
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             cell1.innerHTML = post;
@@ -75,7 +68,6 @@
             button.appendChild(text);
             cell2.appendChild(button);
         }
-
         function reply(reply_button) {
             var tablerow = reply_button.parentElement.parentElement;
             var table = document.getElementById("post_list");
