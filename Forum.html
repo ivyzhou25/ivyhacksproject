@@ -65,9 +65,13 @@
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             cell1.innerHTML = post;
-            cell2.innerHTML = "reply";
-
-            cell2.id=category+table.rows.length;
+            var button = document.createElement('button');
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "button");
+            button.setAttribute("onclick", "reply(this)");
+            var text = document.createTextNode("reply");
+            button.appendChild(text);
+            cell2.appendChild(button);
         }
         function reply(reply_button) {
             var tablerow = reply_button.parentElement.parentElement;
