@@ -1,21 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>forum.com</title>
-   </head>
-<center>   
-   <body style="background-color:grey">
-      <hr><h2><a href="MyWebsite.html">HOME</a> | FORUM</h2></hr>
-      <form action="">
-         <label>What would you like to ask?</label><br>
-         <textarea id="w3review" name="w3review" rows="4" cols="50">
-            </textarea><br>
-         <input type="submit" value="Post">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
+<head><META http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+<center>
+   <div style="background-color:grey">
+      <hr><h2><a href="http://MyWebsite.html" target="_blank">HOME</a> | FORUM<h2><hr>
+      <h3>Welcome to our discussion forum for current issues, you can share your thoughts and reply to other&#39;s post here</h3>
+      <h4>
+         Filter:
+         <select name="category">
+            <option value="all_category">All Topics</option>
+            <option value="study_category">Study</option>
+            <option value="life_category">Life</option>
+         </select>
+      </h4>
+      <table>
+         <tr>
+            <td width="90%"> Welcome to our discussion forum. We have this forum to talk about the impact and issues of covid-19. </td>
+         </tr>
+         <tr>
+            <td width="90%"> the school year this fall? </td>
+            <td> <button type="button">reply</button> </td>
+         </tr>
+         <tr>
+            <td width="90%"> any good online study resource? </td>
+            <td> <button type="button">reply</button></td>
+         </tr>
+         <tr>
+            <td width="90%"> what is your summer life is like? </td>
+            <td width="90%"> <button type="button">reply</button> </td>
+         </tr>
+         <tr>
+            <td width="90%"> feel so boring on the stay at home for next school year? </td>
+            <td width="90%"> <button type="button">reply</button> </td>
+         </tr>
+      </table>
+      <br> <br>
+      <form target="_blank" onsubmit="try {return window.confirm(&quot;This form may not function properly due to certain security constraints.\nContinue?&quot;);} catch (e) {return false;}">
+         <label> Share your thoughts: </label> <br>
+         <span>What is your post&#39;s about?</span><select name="choose_category">
+         <option value="all_category">All Topics</option>
+         <option value="study_category">Study</option>
+         <option value="life_category">Life</option>
+      </select>
+         <textarea rows="5" cols="80"> </textarea>
+         <button type="button">Post</button>
       </form>
-
-
-   </body>
+   </h2></h2></div>
 </center>
-</html>
+</body></html>
